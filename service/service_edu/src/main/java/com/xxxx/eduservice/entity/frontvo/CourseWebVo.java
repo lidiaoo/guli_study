@@ -3,12 +3,14 @@ package com.xxxx.eduservice.entity.frontvo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 @ApiModel(value = "课程信息", description = "网站课程详情页需要的相关字段")
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class CourseWebVo implements Serializable {
 
     private static final long serialVersionUID = 1L;

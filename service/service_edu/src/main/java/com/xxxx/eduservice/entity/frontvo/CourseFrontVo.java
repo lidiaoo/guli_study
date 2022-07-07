@@ -2,10 +2,12 @@ package com.xxxx.eduservice.entity.frontvo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class CourseFrontVo implements Serializable {
     private static final long serialVersionUID = 1L;
     @ApiModelProperty(value = "课程名称")

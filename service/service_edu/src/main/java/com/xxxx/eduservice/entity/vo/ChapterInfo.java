@@ -1,12 +1,14 @@
 package com.xxxx.eduservice.entity.vo;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class ChapterInfo implements Serializable {
     private static final long serialVersionUID = 1L;
     public List<ChapterInfo> children = new ArrayList<>();

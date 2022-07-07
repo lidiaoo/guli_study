@@ -2,11 +2,13 @@ package com.xxxx.commonutils;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class R {
 
     @ApiModelProperty(value = "是否成功")

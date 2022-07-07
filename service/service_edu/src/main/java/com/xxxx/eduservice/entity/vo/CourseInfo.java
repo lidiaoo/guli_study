@@ -2,11 +2,13 @@ package com.xxxx.eduservice.entity.vo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class CourseInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;

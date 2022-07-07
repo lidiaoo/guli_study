@@ -200,11 +200,11 @@ project(":service") {
     }
     project(":service:service_vod") {
         dependencies {
+            api fileTree(dir: 'lib', includes: ['*.jar'])
             api 'com.aliyun:aliyun-java-sdk-core'
             api 'com.aliyun.oss:aliyun-sdk-oss'
             api 'com.aliyun:aliyun-java-sdk-vod'
             api 'org.json:json'
-//            api 'com.aliyun:aliyun-sdk-vod-upload'
         }
     }
 }

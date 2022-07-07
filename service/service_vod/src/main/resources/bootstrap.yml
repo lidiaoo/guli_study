@@ -39,3 +39,9 @@ logging:
     org:
       springframework:
         beans: debug
+
+aliyun:
+  vod:
+    file:
+      keyid: LTAI5tLLzBcAA8a6PHNoAzwo
+      keysecret: oAhowEyNCg5o8o4SNDQD0QYXUN45Jn

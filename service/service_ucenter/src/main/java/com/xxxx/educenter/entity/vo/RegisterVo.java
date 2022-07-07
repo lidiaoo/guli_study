@@ -4,8 +4,10 @@ package com.xxxx.educenter.entity.vo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 @ApiModel(value = "注册对象", description = "注册对象")
 public class RegisterVo {
     @ApiModelProperty(value = "昵称")
