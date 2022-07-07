@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xxxx.eduservice.mapper.EduChapterMapper">
+
+    <select id="getAllChapter" resultType="com.xxxx.eduservice.entity.vo.ChapterInfo">
+        SELECT c.id, c.course_id, c.title, v.chapter_id vchapter_id, v.id vid, v.title vtitle, v.video_source_id
+        FROM edu_video v
+                 RIGHT JOIN (SELECT * FROM edu_chapter WHERE course_id = #{courseId}) c
+                            ON c.id = v.chapter_id
+    </select>
+</mapper>

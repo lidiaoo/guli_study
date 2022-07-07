@@ -1,0 +1,41 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: orderService  # 服务名 对应nacos配置文件的Data Id的服务名
+
+  cloud:
+    polaris:
+      address: grpc://localhost:8091 # 必填
+      namespace: default # 全局 namespace 参数
+      enabled: true
+      config:
+        address: grpc://localhost:8093 # 选填，只有在配置中心和注册中心是两个不同的地址时才需要配置
+        auto-refresh: true # 选填，当配置发布后，动态刷新 Spring 上下文，默认值为 true面
+        groups:
+          - name: guli_study
+            files: [ "service/${spring.application.name}.yml", "base.yml", "mysql.yml","redis.yml" ]
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/guli?serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+
+server:
+  port: 8004
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:com/xxxx/*/mapper/xml/*.xml
+
+logging:
+  level:
+    com:
+      baomidou:
+        mybatisplus:
+          core: debug
+    org:
+      springframework:
+        beans: debug

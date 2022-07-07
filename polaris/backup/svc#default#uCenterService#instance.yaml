@@ -1,0 +1,42 @@
+---
+code: 200000
+info: "execute success"
+type: "INSTANCE"
+service:
+  name: "uCenterService"
+  namespace: "default"
+  metadata:
+    internal-auto-created: "true"
+  ports: ""
+  business: ""
+  department: ""
+  cmdb_mod1: ""
+  cmdb_mod2: ""
+  cmdb_mod3: ""
+  comment: ""
+  owners: "Polaris"
+  ctime: "2022-07-07 17:42:38"
+  mtime: "2022-07-07 17:42:38"
+  revision: "f93bf0a69e2c523c9b9220add85b45593aab6ff1"
+  platform_id: ""
+instances:
+- id: "25eeb09d103f056f3517780e9cd971e4d49927ec"
+  service: "uCenterService"
+  namespace: "default"
+  host: "192.168.139.1"
+  port: 8007
+  protocol: "http"
+  weight: 100
+  healthCheck:
+    type: "HEARTBEAT"
+    heartbeat:
+      ttl: 5
+  healthy: true
+  isolate: false
+  location: {}
+  metadata:
+    version: ""
+    protocol: "http"
+  mtime: "2022-07-07 18:08:48"
+  revision: "687f817552c64d48a8f85a89aa00a3d2"
+  enableHealthCheck: true

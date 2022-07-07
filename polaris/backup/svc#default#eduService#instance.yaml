@@ -1,0 +1,42 @@
+---
+code: 200000
+info: "execute success"
+type: "INSTANCE"
+service:
+  name: "eduService"
+  namespace: "default"
+  metadata:
+    internal-auto-created: "true"
+  ports: ""
+  business: ""
+  department: ""
+  cmdb_mod1: ""
+  cmdb_mod2: ""
+  cmdb_mod3: ""
+  comment: ""
+  owners: "Polaris"
+  ctime: "2022-07-07 16:52:43"
+  mtime: "2022-07-07 16:52:43"
+  revision: "b1e5b48a6914daff46c51ec654d38a0dfb589332"
+  platform_id: ""
+instances:
+- id: "7f70b6279c9b23e55f0ba089f99cafa7cb75ff02"
+  service: "eduService"
+  namespace: "default"
+  host: "192.168.139.1"
+  port: 8002
+  protocol: "http"
+  weight: 100
+  healthCheck:
+    type: "HEARTBEAT"
+    heartbeat:
+      ttl: 5
+  healthy: true
+  isolate: false
+  location: {}
+  metadata:
+    version: ""
+    protocol: "http"
+  mtime: "2022-07-07 18:08:37"
+  revision: "9a19a80a10b740f9b05a8e8f2dd23371"
+  enableHealthCheck: true

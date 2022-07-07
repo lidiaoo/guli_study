@@ -1,0 +1,29 @@
+server:
+  port: 7000
+spring:
+  cloud:
+    polaris:
+      address: grpc://localhost:8091
+      namespace: default
+  application:
+    name: zuulService
+
+zuul:
+  prefix: /api
+  routes:
+    eduService:
+      path: /edu/**
+    cmsService:
+      path: /cms/**
+    msmService:
+      path: /msm/**
+    orderService:
+      path: /order/**
+    ossService:
+      path: /oss/**
+    statisticsService:
+      path: /statistics/**
+    uCenterService:
+      path: /uCenter/**
+    vodService:
+      path: /vod/**

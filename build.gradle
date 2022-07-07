@@ -1,0 +1,210 @@
+buildscript {
+    ext {
+        jdkVersion = JavaVersion.VERSION_17
+        springBootVersion = '2.3.2.RELEASE'
+        springCloudVersion = 'Hoxton.SR9'
+        springCloudTencentVersion = '1.5.3-Hoxton.SR9'
+        SpringFrameworkVersion = '5.2.15.RELEASE'
+        hutoolVersion = '5.8.4';
+
+        mybatisPlusVersion = '3.0.5'
+        velocityVersion = '2.0'
+        swaggerVersion = '2.9.2'
+        netflixVersion = '2.2.10.RELEASE'
+        aliyunOssVersion = '2.8.3'
+        jodatimeVersion = '2.10.1'
+        poiVersion = '3.17'
+        commonsFileuploadVersion = '1.3.1'
+        commonsIoVersion = '2.7'
+        httpclientVersion = '4.5.13'
+        jjwtVersion = '0.7.0'
+        aliyunJavaSdkCoreVersion = '4.3.3'
+        aliyunSdkOssVersion = '3.1.0'
+        aliyunJavaSdkVodVersion = '2.15.2'
+        aliyunJavaVodUploadVersion = '1.4.11'
+        aliyunSdkVodUploadVersion = '1.4.11'
+        fastjsonVersion = '1.2.28'
+        gsonVersion = '2.8.2'
+        jsonVersion = '20170516'
+        commonsDbutilsVersion = '1.7'
+        canalClientVersion = '1.1.0'
+        dockerImagePrefix = 'zx'
+        cloudAlibabaVersion = '0.2.2.RELEASE'
+        commonsBeanutilsVersion = '1.9.3'
+        easyexcelVersion = '2.1.1'
+        wxpaySdkVersion = '0.0.3'
+        commonsPool2Version = '2.11.1'
+        lombokVersion = "1.18.24"
+        mysqlVersion = "8.0.29"
+    }
+}
+
+plugins {
+    id 'java-library'
+}
+
+group = 'com.xxxx'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = "$jdkVersion"
+
+
+allprojects {
+    apply plugin: 'java-library'
+
+    configurations {
+        provided
+    }
+
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    processResources {
+        from('src/main/java') {
+            include '**/*.xml'
+        }
+    }
+
+    dependencies {
+//        版本管理
+        api platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+        api platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
+        api platform("com.tencent.cloud:spring-cloud-tencent-dependencies:$springCloudTencentVersion")
+        api platform("org.springframework.cloud:spring-cloud-starter-netflix-ribbon:$netflixVersion")
+        api platform("org.springframework.cloud:spring-cloud-starter-netflix-hystrix:$netflixVersion")
+        api platform("org.springframework.cloud:spring-cloud-starter-openfeign:$netflixVersion")
+        api platform("com.baomidou:mybatis-plus-boot-starter:$mybatisPlusVersion")
+        api platform("org.apache.velocity:velocity-engine-core:$velocityVersion")
+        api platform("io.springfox:springfox-swagger2:$swaggerVersion")
+        api platform("io.springfox:springfox-swagger-ui:$swaggerVersion")
+        api platform("org.apache.poi:poi:$poiVersion")
+        api platform("org.apache.poi:poi-ooxml:$poiVersion")
+        api platform("commons-fileupload:commons-fileupload:$commonsFileuploadVersion")
+        api platform("org.apache.httpcomponents:httpclient:$httpclientVersion")
+        api platform("commons-io:commons-io:$commonsIoVersion")
+        api platform("commons-beanutils:commons-beanutils:$commonsBeanutilsVersion")
+        api platform("com.alibaba:easyexcel:$easyexcelVersion")
+        api platform("com.github.wxpay:wxpay-sdk:$wxpaySdkVersion")
+        api platform("com.aliyun.oss:aliyun-sdk-oss:$aliyunSdkOssVersion")
+        api platform("org.apache.commons:commons-pool2:$commonsPool2Version")
+        api platform("com.aliyun:aliyun-java-sdk-vod:$aliyunJavaSdkVodVersion")
+        api platform("org.json:json:$jsonVersion")
+        api platform("com.alibaba:fastjson:$fastjsonVersion")
+        api platform("com.aliyun:aliyun-java-sdk-core:$aliyunJavaSdkCoreVersion")
+        api platform("joda-time:joda-time:$jodatimeVersion")
+//        api platform("com.aliyun:aliyun-sdk-vod-upload:$aliyunSdkVodUploadVersion")
+        api platform("io.jsonwebtoken:jjwt:$jjwtVersion")
+        api platform("mysql:mysql-connector-java:$mysqlVersion")
+
+        api 'org.springframework.boot:spring-boot-starter-web'
+        api 'org.springframework.boot:spring-boot-starter-undertow'
+        api "mysql:mysql-connector-java"
+        api "cn.hutool:hutool-all:$hutoolVersion"
+
+        compileOnly 'org.projectlombok:lombok:1.18.4'
+        annotationProcessor 'org.projectlombok:lombok:1.18.4'
+        testCompileOnly 'org.projectlombok:lombok:1.18.4'
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.4'
+
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+project(":common") {
+    allprojects {
+        dependencies {
+            api 'io.springfox:springfox-swagger2'
+            api 'io.springfox:springfox-swagger-ui'
+            api 'com.baomidou:mybatis-plus-boot-starter'
+            api 'org.springframework.boot:spring-boot-starter-data-redis'
+            api 'org.apache.commons:commons-pool2'
+        }
+    }
+
+    project(":common:common_utils") {
+        dependencies {
+            api 'io.jsonwebtoken:jjwt'
+        }
+    }
+    project(":common:service_base") {
+        dependencies {
+            api project(':common:common_utils')
+        }
+    }
+}
+
+
+project(":zuul") {
+    dependencies {
+        api 'com.tencent.cloud:spring-cloud-starter-tencent-polaris-discovery'
+        api 'org.springframework.cloud:spring-cloud-starter-netflix-zuul'
+    }
+}
+
+
+project(":service") {
+    allprojects {
+        dependencies {
+            api project(':common:service_base')
+            api project(':common:common_utils')
+            api 'org.springframework.cloud:spring-cloud-starter-netflix-ribbon'
+            api 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
+            api 'com.tencent.cloud:spring-cloud-starter-tencent-polaris-discovery'
+            api 'com.tencent.cloud:spring-cloud-starter-tencent-polaris-config'
+            api 'org.springframework.cloud:spring-cloud-starter-openfeign'
+            api 'com.baomidou:mybatis-plus-boot-starter'
+            api 'org.apache.velocity:velocity-engine-core'
+            api 'org.apache.poi:poi'
+            api 'org.apache.poi:poi-ooxml'
+            api 'commons-fileupload:commons-fileupload'
+            api 'org.apache.httpcomponents:httpclient'
+            api 'commons-io:commons-io'
+            api 'commons-beanutils:commons-beanutils'
+            api 'com.alibaba:fastjson'
+        }
+    }
+
+    project(":service:service_edu") {
+        dependencies {
+            api 'com.alibaba:easyexcel'
+        }
+    }
+    project(":service:service_msm") {
+        dependencies {
+            api 'com.aliyun:aliyun-java-sdk-core'
+        }
+    }
+    project(":service:service_order") {
+        dependencies {
+            api 'com.github.wxpay:wxpay-sdk'
+        }
+    }
+    project(":service:service_oss") {
+        dependencies {
+            api 'com.aliyun.oss:aliyun-sdk-oss'
+            api 'joda-time:joda-time'
+        }
+    }
+    project(":service:service_oss") {
+        dependencies {
+            api 'org.apache.commons:commons-pool2'
+        }
+    }
+    project(":service:service_vod") {
+        dependencies {
+            api 'com.aliyun:aliyun-java-sdk-core'
+            api 'com.aliyun.oss:aliyun-sdk-oss'
+            api 'com.aliyun:aliyun-java-sdk-vod'
+            api 'org.json:json'
+//            api 'com.aliyun:aliyun-sdk-vod-upload'
+        }
+    }
+}

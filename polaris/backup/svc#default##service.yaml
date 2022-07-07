@@ -1,0 +1,12 @@
+---
+code: 200000
+info: "execute success"
+type: "SERVICES"
+service:
+  name: ""
+  namespace: "default"
+services:
+- name: "ucenterService"
+  namespace: "default"
+- name: "zuulService"
+  namespace: "default"
