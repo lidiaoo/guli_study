@@ -17,7 +17,8 @@ if (!body.data) {
     console.log(url);
     console.log(`body:${$response.body}`);
     $notification.post(notifyTitle, url, "data字段错误");
-} else {
+} else { 
+    $notification.post(notifyTitle, "注入成功 dxy.com");
 }
 
 body = JSON.stringify(body);
