@@ -13,5 +13,5 @@ http:
       timeout: 10 
 script-providers:
   dxy:
-    url: https://github.com/lidiaoo/guli_study/blob/master/dxys.js
+    url: https://raw.githubusercontent.com/lidiaoo/guli_study/refs/heads/master/dxys.js
     interval: 86400 
