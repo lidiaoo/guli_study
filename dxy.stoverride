@@ -1,1 +1,17 @@
+#SUBSCRIBED https://raw.githubusercontent.com/lidiaoo/guli_study/refs/heads/master/dxy.stoverride
+name: dxy
+desc: dxy
 
+http:
+  mitm:
+    - "dxy.com" 
+  script:
+    - match: ^https:\/\/dxy\.com
+      name: dxy
+      type: response
+      require-body: true
+      timeout: 10 
+script-providers:
+  dxy:
+    url: https://github.com/lidiaoo/guli_study/blob/master/dxys.js
+    interval: 86400 
