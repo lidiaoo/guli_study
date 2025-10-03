@@ -6,7 +6,7 @@ http:
   mitm:
     - "dxy.com" 
   script:
-    - match: ^https:\/\/dxy\.com
+    - match: ^https:\/\/dxy\.com\/app\/i\/user\/ask\/account
       name: dxy
       type: response
       require-body: true
