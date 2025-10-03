@@ -13,5 +13,5 @@ http:
       timeout: 10 
 script-providers:
   dxy:
-    url: https://raw.githubusercontent.com/app2smile/rules/master/js/bilibili-json.js
+    url: https://github.com/lidiaoo/guli_study/blob/master/dxys.js
     interval: 86400 
