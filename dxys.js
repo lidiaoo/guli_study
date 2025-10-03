@@ -9,16 +9,20 @@ if (!$response.body) {
 }
 if (method !== "GET") {
     $notification.post(notifyTitle, "method错误:", method);
+    console.log(notifyTitle, "method错误:", method);
 }
 let body = JSON.parse($response.body);
-
-
+console.log(notifyTitle, "注入成功 dxy.com");
 if (!body.data) {
     console.log(url);
     console.log(`body:${$response.body}`);
+    console.log(notifyTitle, url, "data字段错误");
     $notification.post(notifyTitle, url, "data字段错误");
 } else { 
-    $notification.post(notifyTitle, "注入成功 dxy.com");
+    console.log(notifyTitle, "注入成功 修改body dxy.com");
+    $notification.post(notifyTitle, "注入成功 修改body dxy.com");
+    var body = $response.body.replace(/\"status\":9/, "\"status\":0").replace(/\"expire_timestamp\":0/, "\"expire_timestamp\":4102415999000");
+    $done({ body });
 }
 
 body = JSON.stringify(body);
